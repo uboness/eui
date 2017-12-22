@@ -21,6 +21,8 @@ export {
 
 export {
   Pager,
+  Page,
+  PageType
 } from './paging';
 
 export {
@@ -30,3 +32,7 @@ export {
 export {
   noOverflowPlacement,
 } from './overflow';
+
+export {
+  ValueRenderers
+} from './value_renderer';
