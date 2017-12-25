@@ -20,12 +20,13 @@ export {
 } from './color';
 
 export {
-  Pager,
-  Page,
-  PageType
+  Pager
 } from './paging';
 
 export {
+  PropertySortType,
+  SortDirectionType,
+  SortDirection,
   SortableProperties,
 } from './sort';
 
