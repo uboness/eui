@@ -15,12 +15,13 @@ export {
 } from './alignment';
 
 export {
-  Pager,
-  Page,
-  PageType
+  Pager
 } from './paging';
 
 export {
+  PropertySortType,
+  SortDirectionType,
+  SortDirection,
   SortableProperties,
 } from './sort';
 
