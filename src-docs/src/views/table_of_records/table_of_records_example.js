@@ -19,6 +19,7 @@ import AdvanceRenderingTable from './advance_rendering';
 import SingleRecordActionTable from './single_record_action';
 import MultipleRecordActionsTable from './multiple_record_actions';
 import ImplicitRecordActionsTable from './implicit_record_action';
+import DataSourcedTable from './ds';
 
 const basicSource = require('!!raw-loader!./basic');
 const basicHtml = renderToHtml(BasicTable);
@@ -46,6 +47,9 @@ const multipleRecordActionsHtml = renderToHtml(MultipleRecordActionsTable);
 
 const implicitRecordActionSource = require('!!raw-loader!./implicit_record_action');
 const implicitRecordActionHtml = renderToHtml(ImplicitRecordActionsTable);
+
+const dsSource = require('!!raw-loader!./ds');
+const dsHtml = renderToHtml(DataSourcedTable);
 
 export const TableOfRecordsExample = {
   title: 'TableOfRecords',
@@ -418,6 +422,50 @@ export const TableOfRecordsExample = {
         </div>
       ),
       demo: <ImplicitRecordActionsTable/>
+    },
+    {
+      title: 'TableOfRecordsDS (with data source)',
+      source: [
+        {
+          type: GuideSectionTypes.JS,
+          code: dsSource,
+        },
+        {
+          type: GuideSectionTypes.HTML,
+          code: dsHtml,
+        }
+      ],
+      text: (
+        <div>
+          <p>
+            As previously explained, the <EuiCode>TableOfRecords</EuiCode> components is built to be a high level
+            component where it aims to manage as little state as possible and push all data management to its
+            consumers. In all of our examples above, we showed how one can build a container components that wraps
+            around this table and takes care of data management.
+          </p>
+          <p>
+            Since having such a container component is quite common, we&apos;ve built one for you.
+            <EuiCode>TableOfRecordsDS</EuiCode> is what we like to call a &quot;Data Sourced&quot; table component. As
+            its name suggests, along with a <EuiCode>config</EuiCode> property it also accepts a <EuiCode>data</EuiCode>
+            property. The data property can either be a list of all records that should be shown, or... a function that
+            accepts a criteria and returns a <EuiCode>Promise</EuiCode> to an object representing the data:
+          </p>
+          <EuiCodeBlock language="javascript">
+            {`(criteria) => { records: [], totalRecordCount: number }`}
+          </EuiCodeBlock>
+          <EuiSpacer size="m"/>
+          <p>
+            In the following example, we took the table we already implemented in the &quot;Record Actions&quot;
+            section above and implemented it with the <EuiCode>TableOfRecordsDS</EuiCode> component instead. Notice
+            that we no longer need to provide an <EuiCode>onDataCriteriaChange</EuiCode> callback method in the config.
+            The provided data is now enough. We also show how you can request the object to refresh its view using
+            the <EuiCode>EuiTableOfRecordsDS.createRefresher()</EuiCode> factory. The refresher can be very useful
+            when you manipulate the data and you want to let the table know that you did that. In this example, whenever
+            the user deletes a records, we let the table know that it should refresh its view.
+          </p>
+        </div>
+      ),
+      demo: <DataSourcedTable/>
     }
   ]
 };

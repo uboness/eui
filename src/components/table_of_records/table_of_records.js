@@ -43,7 +43,7 @@ const dataTypesProfiles = {
 
 const DATA_TYPES = Object.keys(dataTypesProfiles);
 
-const ButtonRecordActionType = PropTypes.shape({
+export const ButtonRecordActionType = PropTypes.shape({
   type: EuiPropTypes.is('button').isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -57,7 +57,7 @@ const ButtonRecordActionType = PropTypes.shape({
   ])
 });
 
-const IconRecordActionType = PropTypes.shape({
+export const IconRecordActionType = PropTypes.shape({
   type: EuiPropTypes.is('icon').isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -71,20 +71,20 @@ const IconRecordActionType = PropTypes.shape({
   ])
 });
 
-const CustomRecordActionType = PropTypes.shape({
+export const CustomRecordActionType = PropTypes.shape({
   type: EuiPropTypes.is('custom').isRequired,
   render: PropTypes.func.isRequired,  // (record, model, enabled) => PropTypes.node;
   visible: PropTypes.func, // (record, model) => boolean;
   enabled: PropTypes.func // (record, model) => boolean;
 });
 
-const SupportedRecordActionType = PropTypes.oneOfType([
+export const SupportedRecordActionType = PropTypes.oneOfType([
   ButtonRecordActionType,
   IconRecordActionType,
   CustomRecordActionType
 ]);
 
-const DataColumnType = PropTypes.shape({
+export const DataColumnType = PropTypes.shape({
   key: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -96,7 +96,7 @@ const DataColumnType = PropTypes.shape({
   render: PropTypes.func // ((value, record) => PropTypes.node (also see [services/value_renderer] for basic implementations)
 });
 
-const ComputedColumnType = PropTypes.shape({
+export const ComputedColumnType = PropTypes.shape({
   render: PropTypes.func.isRequired, // (record) => PropTypes.node
   name: PropTypes.string,
   description: PropTypes.string,
@@ -104,30 +104,30 @@ const ComputedColumnType = PropTypes.shape({
   truncateText: PropTypes.bool
 });
 
-const ActionsColumnType = PropTypes.shape({
+export const ActionsColumnType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
   width: PropTypes.string,
   actions: PropTypes.arrayOf(SupportedRecordActionType)
 });
 
-const ColumnType = PropTypes.oneOfType([DataColumnType, ComputedColumnType, ActionsColumnType]);
+export const ColumnType = PropTypes.oneOfType([DataColumnType, ComputedColumnType, ActionsColumnType]);
 
-const PaginationType = PropTypes.shape({
+export const PaginationType = PropTypes.shape({
   pageSizeOptions: PropTypes.arrayOf(PropTypes.number)
 });
 
-const SelectionType = PropTypes.shape({
+export const SelectionType = PropTypes.shape({
   onSelectionChanged: PropTypes.func, // (selection: Record[]) => void;,
   selectable: PropTypes.func // (record) => boolean;
 });
 
-const RecordIdType = PropTypes.oneOfType([
+export const RecordIdType = PropTypes.oneOfType([
   PropTypes.string, // the name of the record id property
   PropTypes.func    // (record) => any
 ]);
 
-const ConfigType = PropTypes.shape({
+export const ConfigType = PropTypes.shape({
   // when string, it's treated as the id property name
   // when function it needs to have the following signature: (record) => string
   recordId: RecordIdType.isRequired,
@@ -137,7 +137,7 @@ const ConfigType = PropTypes.shape({
   pagination: PaginationType
 });
 
-const ModelType = PropTypes.shape({
+export const ModelType = PropTypes.shape({
   data: PropTypes.shape({
     records: PropTypes.array.isRequired,
     totalRecordCount: PropTypes.number.isRequired
@@ -151,7 +151,7 @@ const ModelType = PropTypes.shape({
   })
 });
 
-const defaultProps = {
+export const defaultProps = {
   config: {
     column: {
       align: LEFT_ALIGNMENT,
@@ -165,7 +165,7 @@ const defaultProps = {
       render: ValueRenderers.default
     },
     pagination: {
-      pageSizeOptions: [5, 10, 20]
+      pageSizeOptions: EuiTablePagination.defaultProps.itemsPerPageOptions
     }
   }
 };

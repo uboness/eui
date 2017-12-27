@@ -206,7 +206,8 @@ export {
 } from './table';
 
 export {
-  EuiTableOfRecords
+  EuiTableOfRecords,
+  EuiTableOfRecordsDS
 } from './table_of_records';
 
 export {
