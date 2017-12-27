@@ -28,7 +28,3 @@ export {
 export {
   noOverflowPlacement,
 } from './overflow';
-
-export {
-  ValueRenderers
-} from './value_renderer';
