@@ -1,11 +1,14 @@
 import React from 'react';
 import { times } from 'lodash';
 
-import { EuiTableOfRecords } from '../../../../src/components';
-import { ValueRenderers } from '../../../../src/components/value_renderer';
-import { EuiSwitch } from '../../../../src/components/form/switch';
-import { EuiIcon } from '../../../../src/components/icon';
-import { Comparators } from '../../../../src/services/sort';
+import {
+  EuiTableOfRecords,
+  EuiValueRenderers,
+  EuiSwitch,
+  EuiIcon,
+} from '../../../../src/components';
+
+import { Comparators } from '../../../../src/services';
 
 const selectRandom = (...array) => {
   const i = Math.floor(Math.random() * array.length);
@@ -121,7 +124,7 @@ export default class PeopleTable extends React.Component {
           key: 'nickname',
           name: 'Nickname',
           description: `Person's nickname / online handle`,
-          render: ValueRenderers.link({
+          render: EuiValueRenderers.link({
             onClick: (value) => {
               window.open(`http://www.github.com/${value}`, '_blank');
             }
@@ -131,7 +134,7 @@ export default class PeopleTable extends React.Component {
           key: 'dateOfBirth',
           name: 'Date of Birth',
           description: `Person's date of birth`,
-          render: ValueRenderers.date.with({ format: 'D MMM YYYY' }),
+          render: EuiValueRenderers.date.with({ format: 'D MMM YYYY' }),
           sortable: true
         },
         {

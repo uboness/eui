@@ -16,7 +16,7 @@ import { EuiContextMenuItem, EuiContextMenuPanel } from '../context_menu';
 import { EuiSpacer } from '../spacer';
 import { EuiTablePagination } from '../table/table_pagination';
 import { EuiPopover } from '../popover';
-import { ValueRenderers } from '../value_renderer';
+import { EuiValueRenderers } from '../value_renderer';
 import {
   LEFT_ALIGNMENT, RIGHT_ALIGNMENT,
   SortDirection, PropertySortType
@@ -25,19 +25,19 @@ import {
 const dataTypesProfiles = {
   string: {
     align: LEFT_ALIGNMENT,
-    render: ValueRenderers.text
+    render: EuiValueRenderers.text
   },
   number: {
     align: RIGHT_ALIGNMENT,
-    render: ValueRenderers.number
+    render: EuiValueRenderers.number
   },
   boolean: {
     align: LEFT_ALIGNMENT,
-    render: ValueRenderers.booleanText
+    render: EuiValueRenderers.booleanText
   },
   date: {
     align: LEFT_ALIGNMENT,
-    render: ValueRenderers.date
+    render: EuiValueRenderers.date
   }
 };
 
@@ -162,7 +162,7 @@ const defaultProps = {
           color: 'primary'
         }
       },
-      render: ValueRenderers.default
+      render: EuiValueRenderers.default
     },
     pagination: {
       pageSizeOptions: [5, 10, 20]
@@ -413,7 +413,7 @@ export class EuiTableOfRecords extends React.Component {
   resolveColumnOnSort(column, config) {
     if (column.sortable) {
       if (!config.onDataCriteriaChange) {
-        throw new Error(`The table of records is configured to be sortable on column [${column.key}] but 
+        throw new Error(`The table of records is configured to be sortable on column [${column.key}] but
           [onDataCriteriaChange] is not configured. This callback must be implemented to handle to handle the
           sort requests`);
       }

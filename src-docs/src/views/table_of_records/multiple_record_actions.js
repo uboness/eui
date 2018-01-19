@@ -12,7 +12,7 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiSpacer,
-  ValueRenderers,
+  EuiValueRenderers,
 } from '../../../../src/components';
 
 import { Comparators } from '../../../../src/services';
@@ -142,7 +142,7 @@ export default class PeopleTable extends Component {
           key: 'nickname',
           name: 'Nickname',
           description: `Person's nickname / online handle`,
-          render: ValueRenderers.link({
+          render: EuiValueRenderers.link({
             onClick: (value) => {
               window.open(`http://www.github.com/${value}`, '_blank');
             }
@@ -152,7 +152,7 @@ export default class PeopleTable extends Component {
           key: 'dateOfBirth',
           name: 'Date of Birth',
           description: `Person's date of birth`,
-          render: ValueRenderers.date.with({ format: 'D MMM YYYY' }),
+          render: EuiValueRenderers.date.with({ format: 'D MMM YYYY' }),
           sortable: hasSorting,
         },
         {
