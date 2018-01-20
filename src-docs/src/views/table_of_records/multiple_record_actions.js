@@ -42,7 +42,7 @@ const people = times(20, (index) => {
 function loadPage(pageIndex, pageSize, sort) {
   let list = people;
   if (sort) {
-    list = people.sort(Comparators.property(sort.key, sort.direction));
+    list = people.sort(Comparators.property(sort.id, sort.direction));
   }
   const from = pageIndex * pageSize;
   const items = list.slice(from, Math.min(from + pageSize, list.length));
@@ -126,20 +126,20 @@ export default class PeopleTable extends Component {
       recordId: 'id',
       columns: [
         {
-          key: 'firstName',
+          id: 'firstName',
           name: 'First Name',
           description: `Person's given name`,
           dataType: 'string',
           sortable: hasSorting,
         },
         {
-          key: 'lastName',
+          id: 'lastName',
           name: 'Last Name',
           description: `Person's family name`,
           dataType: 'string'
         },
         {
-          key: 'nickname',
+          id: 'nickname',
           name: 'Nickname',
           description: `Person's nickname / online handle`,
           render: EuiValueRenderers.link({
@@ -149,14 +149,14 @@ export default class PeopleTable extends Component {
           })
         },
         {
-          key: 'dateOfBirth',
+          id: 'dateOfBirth',
           name: 'Date of Birth',
           description: `Person's date of birth`,
           render: EuiValueRenderers.date.with({ format: 'D MMM YYYY' }),
           sortable: hasSorting,
         },
         {
-          key: 'online',
+          id: 'online',
           name: 'Online',
           description: `Is this person is currently online?`,
           render: (value) => {

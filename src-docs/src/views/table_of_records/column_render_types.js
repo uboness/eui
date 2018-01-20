@@ -42,22 +42,22 @@ export default class extends Component {
       recordId: 'id',
       columns: [
         {
-          key: 'string',
+          id: 'string',
           name: 'string',
           dataType: 'string',
         },
         {
-          key: 'number',
+          id: 'number',
           name: 'number',
           dataType: 'number'
         },
         {
-          key: 'boolean',
+          id: 'boolean',
           name: 'boolean',
           dataType: 'boolean'
         },
         {
-          key: 'date',
+          id: 'date',
           name: 'date',
           dataType: 'date'
         },
