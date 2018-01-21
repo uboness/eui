@@ -18,9 +18,9 @@ import ImplicitRecordActionsTable from './implicit_record_action';
 const implicitRecordActionSource = require('!!raw-loader!./implicit_record_action');
 const implicitRecordActionHtml = renderToHtml(ImplicitRecordActionsTable);
 
-import ColumnRenderTypes from './column_render_types';
-const columnRenderersSource = require('!!raw-loader!./column_render_types');
-const columnRenderersHtml = renderToHtml(ColumnRenderTypes);
+import ColumnDataTypes from './column_data_types';
+const columnRenderersSource = require('!!raw-loader!./column_data_types');
+const columnRenderersHtml = renderToHtml(ColumnDataTypes);
 
 export const TableOfRecordsExample = {
   title: 'TableOfRecords',
@@ -115,7 +115,7 @@ export const TableOfRecordsExample = {
       demo: <MultipleRecordActionsTable />
     },
     {
-      title: 'Computed Columns and \"Implicit\" Record Actions',
+      title: 'Computed Columns and "Implicit" Record Actions',
       source: [
         {
           type: GuideSectionTypes.JS,
@@ -149,7 +149,7 @@ export const TableOfRecordsExample = {
       demo: <ImplicitRecordActionsTable />
     },
     {
-      title: 'Column render types',
+      title: 'Column data types',
       source: [
         {
           type: GuideSectionTypes.JS,
@@ -163,13 +163,13 @@ export const TableOfRecordsExample = {
       text: (
         <div>
           <p>
-           You can specify a <EuiCode>renderType</EuiCode> property in your column configuration
+           You can specify a <EuiCode>dataType</EuiCode> property in your column configuration
            which will be used as the default format for rendering the data for each cell in
            that column.
           </p>
         </div>
       ),
-      demo: <ColumnRenderTypes />
+      demo: <ColumnDataTypes />
     }
   ]
 };
