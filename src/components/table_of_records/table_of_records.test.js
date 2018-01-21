@@ -14,7 +14,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description'
           }
@@ -45,7 +45,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description'
           }
@@ -79,7 +79,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description'
           }
@@ -121,7 +121,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description'
           }
@@ -162,7 +162,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description',
             sortable: true
@@ -180,7 +180,7 @@ describe('EuiTableOfRecords', () => {
           totalRecordCount: 3
         },
         criteria: {
-          sort: { id: 'name', direction: 'asc' }
+          sort: { field: 'name', direction: 'asc' }
         }
       }
     };
@@ -201,7 +201,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description'
           }
@@ -246,7 +246,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description',
             sortable: true
@@ -292,7 +292,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description',
             sortable: true,
@@ -339,7 +339,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'count',
+            field: 'count',
             name: 'Count',
             description: 'description',
             sortable: true,
@@ -387,7 +387,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'count',
+            field: 'count',
             name: 'Count',
             description: 'description',
             sortable: true,
@@ -435,7 +435,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description',
             sortable: true
@@ -491,7 +491,7 @@ describe('EuiTableOfRecords', () => {
         recordId: 'id',
         columns: [
           {
-            id: 'name',
+            field: 'name',
             name: 'Name',
             description: 'description',
             sortable: true

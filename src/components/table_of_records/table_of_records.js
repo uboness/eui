@@ -85,7 +85,7 @@ const SupportedRecordActionType = PropTypes.oneOfType([
 ]);
 
 const DataColumnType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
   dataType: PropTypes.oneOf(DATA_TYPES),
@@ -255,7 +255,7 @@ export class EuiTableOfRecords extends React.Component {
     this.clearSelection();
     const currentCriteria = this.props.model.criteria;
     let direction = SortDirection.ASC;
-    if (currentCriteria && currentCriteria.sort && currentCriteria.sort.id === column.id) {
+    if (currentCriteria && currentCriteria.sort && currentCriteria.sort.field === column.field) {
       direction = SortDirection.reverse(currentCriteria.sort.direction);
     }
     const criteria = {
@@ -266,7 +266,7 @@ export class EuiTableOfRecords extends React.Component {
         size: currentCriteria.page.size
       },
       sort: {
-        id: column.id,
+        field: column.field,
         direction
       }
     };
@@ -356,7 +356,7 @@ export class EuiTableOfRecords extends React.Component {
       const align = this.resolveColumnAlign(column);
 
       // computed column
-      if (!column.id) {
+      if (!column.field) {
         headers.push(
           <EuiTableHeaderCell
             key={`computed-${index}`}
@@ -374,7 +374,7 @@ export class EuiTableOfRecords extends React.Component {
       const onSort = this.resolveColumnOnSort(column, config);
       headers.push(
         <EuiTableHeaderCell
-          key={column.id}
+          key={column.field}
           align={align}
           isSorted={!!sortDirection}
           isSortAscending={SortDirection.isAsc(sortDirection)}
@@ -405,7 +405,7 @@ export class EuiTableOfRecords extends React.Component {
 
   resolveColumnSortDirection(column, config, model) {
     const modelCriteriaSort = model.criteria ? model.criteria.sort : undefined;
-    if (column.sortable && modelCriteriaSort && modelCriteriaSort.id === column.id) {
+    if (column.sortable && modelCriteriaSort && modelCriteriaSort.field === column.field) {
       return modelCriteriaSort.direction;
     }
   }
@@ -413,7 +413,7 @@ export class EuiTableOfRecords extends React.Component {
   resolveColumnOnSort(column, config) {
     if (column.sortable) {
       if (!config.onDataCriteriaChange) {
-        throw new Error(`The table of records is configured to be sortable on column [${column.id}] but
+        throw new Error(`The table of records is configured to be sortable on column [${column.field}] but
           [onDataCriteriaChange] is not configured. This callback must be implemented to handle to handle the
           sort requests`);
       }
@@ -443,7 +443,7 @@ export class EuiTableOfRecords extends React.Component {
     config.columns.forEach((column, index) => {
       if (column.actions) {
         cells.push(this.renderTableRecordActionsCell(recordId, record, column.actions, config, model));
-      } else if (column.id) {
+      } else if (column.field) {
         cells.push(this.renderTableRecordDataCell(recordId, record, column));
       } else {
         cells.push(this.renderTableRecordComputedCell(recordId, record, column, index));
@@ -465,10 +465,10 @@ export class EuiTableOfRecords extends React.Component {
   }
 
   renderTableRecordDataCell(recordId, record, column) {
-    const key = `${recordId}_${column.id}`;
+    const key = `${recordId}_${column.field}`;
     const align = this.resolveColumnAlign(column);
     const textOnly = !column.render;
-    const value = record[column.id];
+    const value = record[column.field];
     const contentRender = this.resolveContentRender(column);
     const content = contentRender(value, record);
     return (
