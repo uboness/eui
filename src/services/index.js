@@ -28,6 +28,7 @@ export {
   SortDirectionType,
   SortDirection,
   SortableProperties,
+  Comparators,
 } from './sort';
 
 export {
