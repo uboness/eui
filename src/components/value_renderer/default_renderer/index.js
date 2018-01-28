@@ -1,1 +1,1 @@
-export { defaultRenderer } from './defaultRenderer';
+export { defaultRenderer } from './default_renderer';

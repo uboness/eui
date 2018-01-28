@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Value Renderer defaultRenderer array of dates 1`] = `"1 Jan 1999 02:03"`;
+
+exports[`Value Renderer defaultRenderer boolean value 1`] = `"Yes"`;
+
+exports[`Value Renderer defaultRenderer boolean value 2`] = `"No"`;
+
+exports[`Value Renderer defaultRenderer date value 1`] = `"1 Jan 1999 02:03"`;
+
+exports[`Value Renderer defaultRenderer numeric value 1`] = `"1234.567"`;
+
+exports[`Value Renderer defaultRenderer object value 1`] = `"{\\"key\\":\\"value\\"}"`;
+
+exports[`Value Renderer defaultRenderer string value 1`] = `"value"`;
