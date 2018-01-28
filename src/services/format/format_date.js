@@ -41,20 +41,32 @@ export const dateFormatAliases = {
   }
 };
 
-const createDateRenderer = (config = {}) => {
-  const pattern = config.format || dateFormatAliases.dateTime;
-  const resolvedFormat = dateFormatAliases[pattern] || pattern;
-  const nilValue = config.nil || '';
-  return (value) => {
+export const formatDate = (value, dateFormatKeyOrConfig = 'dateTime') => {
+  if (typeof dateFormatKeyOrConfig === 'string') {
     if (isNil(value)) {
-      return nilValue;
+      return '';
     }
-    if (isFunction(resolvedFormat)) {
-      return resolvedFormat(value, config.options);
-    }
-    return moment(value).format(resolvedFormat);
-  };
-};
 
-export const date = createDateRenderer();
-date.with = (config) => createDateRenderer(config);
+    const dateFormat = dateFormatAliases[dateFormatKeyOrConfig] ? dateFormatAliases[dateFormatKeyOrConfig] : dateFormatKeyOrConfig;
+
+    return moment(value).format(dateFormat);
+  }
+
+  const {
+    format = 'dateTime',
+    nil = '',
+    options,
+  } = dateFormatKeyOrConfig;
+
+  const dateFormat = dateFormatAliases[format] ? dateFormatAliases[format] : format;
+
+  if (isNil(value)) {
+    return nil;
+  }
+
+  if (isFunction(dateFormat)) {
+    return dateFormat(value, options);
+  }
+
+  return moment(value).format(dateFormat);
+};

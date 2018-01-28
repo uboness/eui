@@ -1,5 +1,5 @@
 import { isArray, isBoolean, isDate, isNaN, isNil, isNumber, isString } from 'lodash';
-import { date } from '../date';
+import { formatDate } from '../../../services';
 import { join } from '../compound';
 import { number } from '../number';
 import { text } from '../text';
@@ -13,7 +13,7 @@ export const defaultRenderer = (value) => {
     return text(value);
   }
   if (isDate(value)) {
-    return date(value);
+    return formatDate(value);
   }
   if (isBoolean(value)) {
     return booleanText(value);

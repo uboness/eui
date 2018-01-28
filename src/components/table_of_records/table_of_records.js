@@ -11,6 +11,7 @@ import { ICON_TYPES } from '../icon';
 import { COLORS as BUTTON_ICON_COLORS } from '../button/button_icon/button_icon';
 import { EuiValueRenderers } from '../value_renderer';
 import {
+  formatDate,
   LEFT_ALIGNMENT, RIGHT_ALIGNMENT,
   SortDirection, PropertySortType
 } from '../../services';
@@ -37,7 +38,7 @@ const dataTypesProfiles = {
   },
   date: {
     align: LEFT_ALIGNMENT,
-    render: EuiValueRenderers.date
+    render: value => formatDate(value)
   }
 };
 

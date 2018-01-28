@@ -20,6 +20,10 @@ export {
 } from './color';
 
 export {
+  formatDate,
+} from './format';
+
+export {
   Pager
 } from './paging';
 
