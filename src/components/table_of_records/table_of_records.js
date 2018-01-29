@@ -13,6 +13,7 @@ import { EuiValueRenderers } from '../value_renderer';
 import {
   formatBoolean,
   formatDate,
+  formatNumber,
   LEFT_ALIGNMENT, RIGHT_ALIGNMENT,
   SortDirection, PropertySortType
 } from '../../services';
@@ -31,15 +32,15 @@ const dataTypesProfiles = {
   },
   number: {
     align: RIGHT_ALIGNMENT,
-    render: EuiValueRenderers.number
+    render: value => formatNumber(value),
   },
   boolean: {
     align: LEFT_ALIGNMENT,
-    render: value => formatBoolean(value)
+    render: value => formatBoolean(value),
   },
   date: {
     align: LEFT_ALIGNMENT,
-    render: value => formatDate(value)
+    render: value => formatDate(value),
   }
 };
 

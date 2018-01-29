@@ -2,9 +2,9 @@ import { isArray, isBoolean, isDate, isNaN, isNil, isNumber, isString } from 'lo
 import {
   formatBoolean,
   formatDate,
+  formatNumber,
 } from '../../../services';
 import { join } from '../compound';
-import { number } from '../number';
 import { text } from '../text';
 
 export const defaultRenderer = (value) => {
@@ -21,7 +21,7 @@ export const defaultRenderer = (value) => {
     return formatBoolean(value);
   }
   if (isNumber(value)) {
-    return number(value);
+    return formatNumber(value);
   }
   if (isArray(value)) {
     return join(defaultRenderer)(value);

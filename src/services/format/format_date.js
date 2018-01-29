@@ -47,7 +47,7 @@ export const formatDate = (value, dateFormatKeyOrConfig = 'dateTime') => {
       return '';
     }
 
-    const dateFormat = dateFormatAliases[dateFormatKeyOrConfig] ? dateFormatAliases[dateFormatKeyOrConfig] : dateFormatKeyOrConfig;
+    const dateFormat = dateFormatAliases[dateFormatKeyOrConfig] || dateFormatKeyOrConfig;
 
     return moment(value).format(dateFormat);
   }
@@ -58,7 +58,7 @@ export const formatDate = (value, dateFormatKeyOrConfig = 'dateTime') => {
     options,
   } = dateFormatKeyOrConfig;
 
-  const dateFormat = dateFormatAliases[format] ? dateFormatAliases[format] : format;
+  const dateFormat = dateFormatAliases[format] || format;
 
   if (isNil(value)) {
     return nil;

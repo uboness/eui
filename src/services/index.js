@@ -22,6 +22,7 @@ export {
 export {
   formatBoolean,
   formatDate,
+  formatNumber,
 } from './format';
 
 export {
