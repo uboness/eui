@@ -14,6 +14,7 @@ import {
   formatBoolean,
   formatDate,
   formatNumber,
+  formatText,
   LEFT_ALIGNMENT, RIGHT_ALIGNMENT,
   SortDirection, PropertySortType
 } from '../../services';
@@ -28,7 +29,7 @@ const dataTypesProfiles = {
   },
   string: {
     align: LEFT_ALIGNMENT,
-    render: EuiValueRenderers.text
+    render: value => formatText(value)
   },
   number: {
     align: RIGHT_ALIGNMENT,

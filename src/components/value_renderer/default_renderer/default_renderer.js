@@ -3,16 +3,16 @@ import {
   formatBoolean,
   formatDate,
   formatNumber,
+  formatText,
 } from '../../../services';
 import { join } from '../compound';
-import { text } from '../text';
 
 export const defaultRenderer = (value) => {
   if (isNil(value) || isNaN(value)) {
     return '';
   }
   if (isString(value)) {
-    return text(value);
+    return formatText(value);
   }
   if (isDate(value)) {
     return formatDate(value);

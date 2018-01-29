@@ -23,6 +23,7 @@ export {
   formatBoolean,
   formatDate,
   formatNumber,
+  formatText,
 } from './format';
 
 export {
