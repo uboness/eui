@@ -11,6 +11,7 @@ import { ICON_TYPES } from '../icon';
 import { COLORS as BUTTON_ICON_COLORS } from '../button/button_icon/button_icon';
 import { EuiValueRenderers } from '../value_renderer';
 import {
+  formatBoolean,
   formatDate,
   LEFT_ALIGNMENT, RIGHT_ALIGNMENT,
   SortDirection, PropertySortType
@@ -34,7 +35,7 @@ const dataTypesProfiles = {
   },
   boolean: {
     align: LEFT_ALIGNMENT,
-    render: EuiValueRenderers.booleanText
+    render: value => formatBoolean(value)
   },
   date: {
     align: LEFT_ALIGNMENT,

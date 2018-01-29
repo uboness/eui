@@ -20,6 +20,7 @@ export {
 } from './color';
 
 export {
+  formatBoolean,
   formatDate,
 } from './format';
 

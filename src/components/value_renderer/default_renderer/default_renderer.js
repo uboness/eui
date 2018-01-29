@@ -1,9 +1,11 @@
 import { isArray, isBoolean, isDate, isNaN, isNil, isNumber, isString } from 'lodash';
-import { formatDate } from '../../../services';
+import {
+  formatBoolean,
+  formatDate,
+} from '../../../services';
 import { join } from '../compound';
 import { number } from '../number';
 import { text } from '../text';
-import { booleanText } from '../boolean';
 
 export const defaultRenderer = (value) => {
   if (isNil(value) || isNaN(value)) {
@@ -16,7 +18,7 @@ export const defaultRenderer = (value) => {
     return formatDate(value);
   }
   if (isBoolean(value)) {
-    return booleanText(value);
+    return formatBoolean(value);
   }
   if (isNumber(value)) {
     return number(value);
