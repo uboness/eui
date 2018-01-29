@@ -9,7 +9,19 @@ const numberFormatAliases = {
   integer: '0,0'
 };
 
-export const formatNumber = (value, { format, round, nil = '' } = {}) => {
+export const formatNumber = (value, numberFormatOrConfig = {}) => {
+  let format;
+  let nil = '';
+  let round;
+
+  if (typeof numberFormatOrConfig === 'string') {
+    format = numberFormatOrConfig;
+  } else {
+    format = numberFormatOrConfig.format;
+    nil = numberFormatOrConfig.nil || '';
+    round = numberFormatOrConfig.round;
+  }
+
   if (!format) {
     return isNil(value) ? nil : value.toString();
   }
