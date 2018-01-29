@@ -1,5 +1,5 @@
 import numeral from 'numeral';
-import { isNil } from 'lodash';
+import { isNil, isString } from 'lodash';
 
 const numberFormatAliases = {
   decimal1: '0,0.0',
@@ -14,7 +14,7 @@ export const formatNumber = (value, numberFormatOrConfig = {}) => {
   let nil = '';
   let round;
 
-  if (typeof numberFormatOrConfig === 'string') {
+  if (isString(numberFormatOrConfig)) {
     format = numberFormatOrConfig;
   } else {
     format = numberFormatOrConfig.format;

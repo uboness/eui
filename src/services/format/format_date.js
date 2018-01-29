@@ -1,4 +1,4 @@
-import { isNil, isFunction } from 'lodash';
+import { isNil, isFunction, isString } from 'lodash';
 import moment from 'moment';
 
 const calendar = (value, options = {}) => {
@@ -42,7 +42,7 @@ export const dateFormatAliases = {
 };
 
 export const formatDate = (value, dateFormatKeyOrConfig = 'dateTime') => {
-  if (typeof dateFormatKeyOrConfig === 'string') {
+  if (isString(dateFormatKeyOrConfig)) {
     if (isNil(value)) {
       return '';
     }
