@@ -23,7 +23,7 @@ import { CollapsedRecordActions } from './collapsed_record_actions';
 import { ExpandedRecordActions } from './expanded_record_actions';
 
 const dataTypesProfiles = {
-  default: {
+  auto: {
     align: LEFT_ALIGNMENT,
     render: value => formatAuto(value)
   },
@@ -344,7 +344,7 @@ export class EuiTableOfRecords extends React.Component {
     if (column.align) {
       return column.align;
     }
-    const dataType = column.dataType || 'default';
+    const dataType = column.dataType || 'auto';
     const profile = dataTypesProfiles[dataType];
     if (!profile) {
       throw new Error(`Unknown dataType [${dataType}]. The supported data types are [${DATA_TYPES.join(', ')}]`);
@@ -443,7 +443,7 @@ export class EuiTableOfRecords extends React.Component {
     if (column.render) {
       return column.render;
     }
-    const dataType = column.dataType || 'default';
+    const dataType = column.dataType || 'auto';
     const profile = dataTypesProfiles[dataType];
     if (!profile) {
       throw new Error(`Unknown dataType [${dataType}]. The supported data types are [${DATA_TYPES.join(', ')}]`);
