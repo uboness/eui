@@ -9,8 +9,8 @@ import {
 import { EuiCheckbox } from '../form/checkbox';
 import { ICON_TYPES } from '../icon';
 import { COLORS as BUTTON_ICON_COLORS } from '../button/button_icon/button_icon';
-import { EuiValueRenderers } from '../value_renderer';
 import {
+  formatAuto,
   formatBoolean,
   formatDate,
   formatNumber,
@@ -25,7 +25,7 @@ import { ExpandedRecordActions } from './expanded_record_actions';
 const dataTypesProfiles = {
   default: {
     align: LEFT_ALIGNMENT,
-    render: EuiValueRenderers.default
+    render: value => formatAuto(value)
   },
   string: {
     align: LEFT_ALIGNMENT,
