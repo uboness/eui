@@ -12,16 +12,9 @@ export const SearchConfigType = PropTypes.shape({
   filters: FilterBarConfigType
 });
 
-const resolveQuery = (query) => {
-  if (!query) {
-    return Query.parse('');
-  }
-  return isString(query) ? Query.parse(query) : query;
-};
-
-export const SearchBar = ({ config, query, onChange }) => {
-  query = resolveQuery(query);
-  const filters = !config.filters ? undefined : (
+export const SearchBar = ({ config, query = '', onChange }) => {
+  query = isString(query) ? Query.parse(query) : query;
+  const filters = !config.filters || config.filters.length === 0 ? undefined : (
     <FilterBar config={config.filters} query={query} onChange={onChange}/>
   );
   return (

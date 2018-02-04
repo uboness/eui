@@ -6,32 +6,24 @@ import { Query } from './query';
 
 export const FilterBarConfigType = PropTypes.arrayOf(FilterConfigType);
 
-export class FilterBar extends React.Component {
-
-  static propTypes = {
-    query: PropTypes.instanceOf(Query).isRequired,
-    onChange: PropTypes.func.isRequired,
-    config: FilterBarConfigType
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { config = [], query, onChange } = this.props;
-    return config.reduce((controls, filterConfig, index) => {
-      if (filterConfig.available && !filterConfig.available()) {
-        return controls;
-      }
-      const key = `filter_${index}`;
-      const control = createFilter(index, filterConfig, query, onChange);
-      controls.push(
-        <EuiFlexItem key={key} grow={false}>
-          {control}
-        </EuiFlexItem>
-      );
+export const FilterBar = ({ query, onChange, config = [] }) => {
+  return config.reduce((controls, filterConfig, index) => {
+    if (filterConfig.available && !filterConfig.available()) {
       return controls;
-    }, []);
-  }
-}
+    }
+    const key = `filter_${index}`;
+    const control = createFilter(index, filterConfig, query, onChange);
+    controls.push(
+      <EuiFlexItem key={key} grow={false}>
+        {control}
+      </EuiFlexItem>
+    );
+    return controls;
+  }, []);
+};
+
+FilterBar.propTypes = {
+  query: PropTypes.instanceOf(Query).isRequired,
+  onChange: PropTypes.func.isRequired,
+  config: FilterBarConfigType
+};
