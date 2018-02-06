@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isArray, isNil } from '../../../../services/predicate';
 
+import { keyCodes } from '../../../../services';
+
 import { Occur } from '../query';
 import { EuiPropTypes } from '../../../../utils/prop_types';
-import { EuiButtonEmpty } from '../../../button/button_empty';
 import { EuiPopover } from '../../../popover/popover';
 import { EuiPopoverTitle } from '../../../popover/popover_title';
 import { EuiFieldSearch } from '../../../form/field_search/field_search';
-import { EuiFilterSelectItem } from '../../../filter_select';
+import { EuiFilterSelectItem, EuiFilterButton } from '../../../filter_group';
 import { EuiLoadingChart } from '../../../loading/loading_chart';
 import { EuiSpacer } from '../../../spacer/spacer';
 import { EuiIcon } from '../../../icon/icon';
@@ -149,25 +150,35 @@ export class FieldValueSelectionFilter extends React.Component {
     }
   }
 
+  onKeyDown(index, event) {
+    if (event.keyCode === keyCodes.DOWN) {
+      this.refs[index + 1].focus();
+    } else if (event.keyCode === keyCodes.UP) {
+      this.refs[index - 1].focus();
+    }
+  }
+
   render() {
     const { index, query, config } = this.props;
     const active = query.hasFieldClause(config.field);
-    const buttonColor = active ? 'primary' : 'text';
+    const hasActiveFilters = active ? true : false;
 
     const button = (
-      <EuiButtonEmpty
+      <EuiFilterButton
         iconType="arrowDown"
         iconSide="right"
         onClick={this.onButtonClick.bind(this)}
-        color={buttonColor}
+        hasActiveFilters={hasActiveFilters}
       >
         {config.name}
-      </EuiButtonEmpty>
+      </EuiFilterButton>
     );
 
 
     const searchBox = this.renderSearchBox();
     const content = this.renderContent(config.field, query);
+    const threshold = this.props.config.searchThreshold || defaults.config.searchThreshold;
+    const withTitle = this.state.options && this.state.options.all.length >= threshold;
 
     return (
       <EuiPopover
@@ -177,7 +188,9 @@ export class FieldValueSelectionFilter extends React.Component {
         isOpen={this.state.popoverOpen}
         closePopover={this.closePopover.bind(this)}
         panelPaddingSize="none"
-        withTitle
+        withTitle={withTitle}
+        anchorPosition="downRight"
+        panelClassName="euiFilterGroup__popoverPanel"
       >
         {searchBox}
         {content}
@@ -195,6 +208,7 @@ export class FieldValueSelectionFilter extends React.Component {
             disabled={disabled}
             incremental={true}
             onSearch={(query) => this.filterOptions(query)}
+            onKeyDown={this.onKeyDown.bind(this, 1)}
           />
         </EuiPopoverTitle>
       );
@@ -223,6 +237,8 @@ export class FieldValueSelectionFilter extends React.Component {
           key={index}
           checked={checked}
           onClick={onClick}
+          ref={(ref) => this.refs[index] = ref}
+          onKeyDown={this.onKeyDown.bind(this, index)}
         >
           {option.view ? option.view : this.resolveOptionName(option) }
         </EuiFilterSelectItem>
