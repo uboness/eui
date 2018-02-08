@@ -5,8 +5,12 @@
   width: auto;
   display: inline-block;
 
+  /**
+   * 1. Borders from the buttons need need to be negated.
+   */
   > * + * {
-    border-left: $euiBorderThin;
+    border-left: $euiBorderThin !important; // 1
+    border-color: tintOrShade($euiBorderColor, 10%, 10%);
   }
 }
 

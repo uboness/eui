@@ -73,7 +73,7 @@ export default class extends Component {
 
     return (
       <EuiFilterGroup>
-        <EuiFilterButton>
+        <EuiFilterButton hasActiveFilters>
           Filter on
         </EuiFilterButton>
         <EuiFilterButton>
