@@ -65,6 +65,12 @@ export {
 } from './expression';
 
 export {
+  EuiFilterButton,
+  EuiFilterGroup,
+  EuiFilterSelectItem
+} from './filter_group';
+
+export {
   EuiFlexGroup,
   EuiFlexGrid,
   EuiFlexItem,
@@ -191,6 +197,10 @@ export {
 export {
   EuiProgress,
 } from './progress';
+
+export {
+  EuiSearchBar,
+} from './search_bar';
 
 export {
   EuiSpacer,
